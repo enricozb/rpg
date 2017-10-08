@@ -1,0 +1,35 @@
+#sample_map {
+    padding: 10px;
+    padding-bottom: 0;
+    size: 200%;
+}
+
+#array_to_map {
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+    image-rendering: crisp-edges;
+}
+
+#grass{
+    height: 10%;
+    width: 10%;
+    padding: 10px;
+    padding-bottom: 0;
+    image-rendering: pixelated;
+}
+
+.hljs-string,
+.hljs-section,
+.hljs-selector-class,
+.hljs-template-variable,
+.hljs-deletion {
+  color: red;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
