@@ -45,7 +45,7 @@ class Game:
         for r, row in enumerate(sample_map):
             for c, tile in enumerate(row):
                 tile, h = tile
-                h = math.sin(c + r + (pygame.time.get_ticks()/300))
+                # h = math.sin(c + r + (pygame.time.get_ticks()/300))
                 n_loc = (l + r * z + c * w + h * y for l, z, w, y in zip(loc, zhat, what, yhat))
                 n_loc = list(n_loc)
                 self.screen.blit(self.grass if tile else self.dirt, n_loc)

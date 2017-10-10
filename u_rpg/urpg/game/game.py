@@ -1,7 +1,9 @@
 import pygame
 from pygame.locals import *
 
+from urpg.event_handler import EventHandler
 from urpg.game_state import GameState
+from urpg.map import Map
 from urpg.ui import UI
 
 class Game:
@@ -13,8 +15,10 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((1024, 768), DOUBLEBUF)
         self.clock = pygame.time.Clock()
-        self.state = GameState()
+        self.state = GameState.START_MENU
         self.ui = UI(self)
+        self.map = Map()
+        self.event_handler = EventHandler(self)
         self.init_fonts()
 
     def init_fonts(self):
@@ -23,6 +27,7 @@ class Game:
 
     def render(self):
         self.ui.render()
+        self.map.render()
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -33,9 +38,13 @@ class Game:
 
 
     def run(self):
+        '''
+        Entry point for starting the game.
+        '''
         while True:
             self.clock.tick()
             self.render()
             if self.handle_events() == pygame.QUIT:
                 return
             pygame.display.flip()
+

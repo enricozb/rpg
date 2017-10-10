@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 
-from urpg.game_state import *
+from urpg.game_state import GameState
 
 class UI:
     def __init__(self, game):
@@ -9,13 +9,13 @@ class UI:
         self.game = game
 
     def render(self):
-        if self.game.state == TRANSITION:
+        if self.game.state == GameState.TRANSITION:
             pass
-        elif self.game.state == START_MENU:
+        elif self.game.state == GameState.START_MENU:
             self.render_start_menu()
-        elif self.game.state == PLAYING:
+        elif self.game.state == GameState.PLAYING:
             pass
-        elif self.game.state == PAUSED:
+        elif self.game.state == GameState.PAUSED:
             pass
 
     def handle_event(self, event):
