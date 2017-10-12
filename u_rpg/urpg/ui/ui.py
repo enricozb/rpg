@@ -2,11 +2,20 @@ import pygame
 from pygame.locals import *
 
 from urpg.game_state import GameState
+from urpg.ui import Dialog, SliceSprite
 
 class UI:
     def __init__(self, game):
         ''' Initializes a UI class bound to its parent Game class '''
         self.game = game
+        self.dialogs = [Dialog('Hello, World!')]
+
+        self.image = pygame.image.load('urpg/resources/img/ui_dialog_box.png')
+        self.image = SliceSprite(self.image, 11)
+        self.image.width = 500
+        self.image.height = 100
+        self.image.x = 100
+        self.image.y = 100
 
     def render(self):
         if self.game.state == GameState.TRANSITION:
@@ -19,12 +28,10 @@ class UI:
             pass
 
     def handle_event(self, event):
-        pass
+        if self.dialogs:
+            if self.dialogs[-1].handle_event(event):
+                self.dialogs.pop()
 
     def render_start_menu(self):
-        return
-        text = self.game.fonts['mono'].render("Hello", False, (255, 255, 255))
-        center = (self.game.screen.get_width()/2, self.game.screen.get_height()/2)
-        self.game.screen.blit(label, label.get_rect(center=center))
-
-
+        if self.dialogs:
+            self.dialogs[-1].draw(self.game.screen)

@@ -4,3 +4,6 @@ class Map:
 
     def render(self):
         pass
+
+    def handle_event(self, event):
+        pass

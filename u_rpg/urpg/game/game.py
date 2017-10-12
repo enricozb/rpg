@@ -34,7 +34,7 @@ class Game:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return pygame.QUIT
-            #self.event_handler.handle(event)
+            self.event_handler.handle(event)
 
 
     def run(self):
