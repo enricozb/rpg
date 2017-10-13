@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import *
 
 from urpg.game_state import GameState
 from urpg.ui import Dialog, SliceSprite
@@ -8,7 +7,14 @@ class UI:
     def __init__(self, game):
         ''' Initializes a UI class bound to its parent Game class '''
         self.game = game
-        self.dialogs = [Dialog('Hello, World!')]
+        self.dialogs = [
+            Dialog(
+                'Hello traveler! I am the future that is your mother '
+                'and father. The one who never stops loving. The one '
+                'who says hello and goodbye. The one who only squeezes '
+                'when you ask.'
+            )
+        ]
 
         self.image = pygame.image.load('urpg/resources/img/ui_dialog_box.png')
         self.image = SliceSprite(self.image, 11)
